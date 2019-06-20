@@ -11,9 +11,10 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     </head>
     <body>
-
-        <div id="app">
-            <Signin></Signin>
+        <div id="page">
+            <div id="app">
+                <Signin></Signin>
+            </div>        
         </div>
         
         <script src="{{ mix('js/app.js') }}"></script>

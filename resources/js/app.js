@@ -21,6 +21,8 @@ window.Vue = require('vue');
 
 Vue.component('Signin', require('./views/Signin.vue').default);
 Vue.component('Signup', require('./views/Signup.vue').default);
+Vue.component('SigninComponent', require('./components/account/SigninComponent.vue').default);
+Vue.component('SignupComponent', require('./components/account/SignupComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
