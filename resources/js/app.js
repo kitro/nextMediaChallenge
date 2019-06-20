@@ -8,21 +8,25 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
 
-// const files = require.context('./', true, /\.vue$/i);
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
+// Signin & Signup Components
 
 Vue.component('Signin', require('./views/Signin.vue').default);
 Vue.component('Signup', require('./views/Signup.vue').default);
 Vue.component('SigninComponent', require('./components/account/SigninComponent.vue').default);
 Vue.component('SignupComponent', require('./components/account/SignupComponent.vue').default);
+
+// Profile components
+Vue.component('Profile', require('./views/Profile.vue').default);
+Vue.component('ProfileComponent', require('./components/profile/ProfileComponent.vue').default);
+Vue.component('UpdatePasswordComponent', require('./components/profile/UpdatePasswordComponent.vue').default);
+
+// Item Components
+Vue.component('Home', require('./views/Home.vue').default);
+Vue.component('ItemsComponent', require('./components/items/ItemsComponent.vue').default);
+Vue.component('ItemComponent', require('./components/items/ItemComponent.vue').default);
+
+import routes from './routes/routes.js'
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -32,4 +36,5 @@ Vue.component('SignupComponent', require('./components/account/SignupComponent.v
 
 const app = new Vue({
     el: '#app',
+    router: routes
 });

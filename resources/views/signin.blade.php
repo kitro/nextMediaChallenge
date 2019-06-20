@@ -13,7 +13,7 @@
     <body>
         <div id="page">
             <div id="app">
-                <Signin></Signin>
+                <router-view></router-view>
             </div>        
         </div>
         

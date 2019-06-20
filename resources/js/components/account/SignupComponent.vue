@@ -15,7 +15,7 @@
                 <input type="password" class="form-control" id="confirm-password" placeholder="Confirm password">
             </div>
             <button type="submit" class="btn btn-primary">Sign up</button>
-            <a href="" class="float-right">Sign in</a>
+            <router-link :to="{ name: 'signin' }" class="float-right" >Sign in</router-link>
         </form>
     </div>
 </template>

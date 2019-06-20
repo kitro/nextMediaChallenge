@@ -1,6 +1,6 @@
 <template>
-    <div class="container">
-        <SignupComponent></SignupComponent>
+    <div>
+        List items
     </div>
 </template>
 
