@@ -3,7 +3,7 @@
         <h1>Items</h1>
         <ItemComponent v-for="item in items" v-bind:key="item.id" v-bind:item="item"></ItemComponent>
         <div>
-            <button class="btn btn-primary text-center" @click="allItems(page+1)">Load More</button>
+            <button class="btn btn-primary text-center" @click="nextPage">Load More</button>
             <LoadingComponent v-bind:loading="isLoading"></LoadingComponent>
         </div>
     </div>
@@ -11,7 +11,6 @@
 
 <script>
 import {api} from '../../api/api.js'
-import { log } from 'util';
 
 export default {
     data : function() {
@@ -26,7 +25,7 @@ export default {
     }, 
 
     mounted() {
-        this.allItems(this.page+1)
+        this.allItems(this.page++)
     },
 
     methods: {
@@ -38,6 +37,10 @@ export default {
             }).finally(() => {
                 this.isLoading = false
             })            
+        },
+
+        nextPage() {
+            this.allItems(this.page++)
         }
     }
 }
