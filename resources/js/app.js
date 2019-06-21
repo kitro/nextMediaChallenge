@@ -26,6 +26,9 @@ Vue.component('Home', require('./views/Home.vue').default);
 Vue.component('ItemsComponent', require('./components/items/ItemsComponent.vue').default);
 Vue.component('ItemComponent', require('./components/items/ItemComponent.vue').default);
 
+// loading component
+Vue.component('LoadingComponent', require('./components/loading/LoadingComponent.vue').default);
+
 import routes from './routes/routes.js'
 
 /**

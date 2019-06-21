@@ -1,6 +1,6 @@
 <template>
-    <div>
-        Home Page
+    <div class="container">
+        <ItemsComponent></ItemsComponent>
     </div>
 </template>
 

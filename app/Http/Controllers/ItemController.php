@@ -31,7 +31,7 @@ class ItemController extends Controller
 
     // List items
     public function index(Request $request) {
-        return Item::paginate();
+        return Item::with('user')->paginate();
     }
 
     // uplad image
