@@ -1,6 +1,6 @@
 <template>
-    <div>
-        Profile
+    <div class="container">
+        <ProfileComponent></ProfileComponent>        
     </div>
 </template>
 

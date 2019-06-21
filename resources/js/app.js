@@ -25,6 +25,7 @@ Vue.component('UpdatePasswordComponent', require('./components/profile/UpdatePas
 Vue.component('Home', require('./views/Home.vue').default);
 Vue.component('ItemsComponent', require('./components/items/ItemsComponent.vue').default);
 Vue.component('ItemComponent', require('./components/items/ItemComponent.vue').default);
+Vue.component('AddItemComponent', require('./components/items/AddItemComponent.vue').default);
 
 // loading component
 Vue.component('LoadingComponent', require('./components/loading/LoadingComponent.vue').default);

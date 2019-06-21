@@ -26,7 +26,7 @@ class AccountController extends Controller
         $data['ok'] = true;
 
         $user = Auth::user();
-        return $request->get('old_password');
+
         // check passowrd
         if(!Hash::check($request->old_password, Auth::user()->password)) {
             $data['ok'] = false;

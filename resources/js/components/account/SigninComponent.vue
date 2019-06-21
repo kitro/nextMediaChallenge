@@ -1,14 +1,14 @@
 <template>
     <div>
         <h2>Sign in</h2>
-        <form>
+        <form @submit.prevent="signin">
             <div class="form-group">
                 <label for="email">Email address</label>
-                <input type="email" class="form-control" id="email" placeholder="Email">
+                <input v-model="user.email" type="email" class="form-control" id="email" placeholder="Email">
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" class="form-control" id="password" placeholder="Password">
+                <input v-model="user.password" type="password" class="form-control" id="password" placeholder="Password">
             </div>
             <button type="submit" class="btn btn-primary">Sign in</button>
             <router-link :to="{ name: 'signup' }" class="float-right" >Sign up</router-link>
@@ -17,8 +17,35 @@
 </template>
 
 <script>
-export default {
 
+import {api} from '../../api/api.js'
+
+export default {
+    data: function() {
+        return {
+            isLoading: false,
+            error: {},
+            user : {
+                email : '',
+                password: '',
+            }
+        }
+    },
+
+    methods: {
+        signin() {
+            
+            api.post("signin", this.user).then(data => {
+               
+                // add token to api
+                api.defaults.headers.common['Authorization'] = `Bearer ${data.data.access_token}`
+                this.$router.push({ name: 'profile'})
+               
+            }).catch(err => {
+                this.error.msg = "Error occure"
+            })
+        }
+    }    
 }
 </script>
 

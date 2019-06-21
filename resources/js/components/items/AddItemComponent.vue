@@ -1,6 +1,6 @@
 <template>
     <div>
-        Edit item
+        Add item
     </div>
 </template>
 

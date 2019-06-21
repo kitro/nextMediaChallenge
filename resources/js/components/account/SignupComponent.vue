@@ -25,7 +25,6 @@
 
 <script>
 import {api} from '../../api/api.js'
-import { log } from 'util';
 
 export default {
     data: function() {
