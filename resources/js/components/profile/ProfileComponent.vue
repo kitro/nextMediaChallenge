@@ -1,12 +1,6 @@
 <template>
     <div>
-        <h2>Hi {{user.email}}</h2>
-
-        <button class="btn btn-primary">Update Password</button>
-        <UpdatePasswordComponent></UpdatePasswordComponent>
-        <button class="btn btn-primary">Add item</button>
-        <AddItemComponent></AddItemComponent>
-        
+        <h2>Hi {{user.email}}</h2>        
     </div>
 </template>
 

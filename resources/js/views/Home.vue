@@ -1,5 +1,6 @@
 <template>
     <div class="container">
+        <Navbar></Navbar>
         <ItemsComponent></ItemsComponent>
     </div>
 </template>

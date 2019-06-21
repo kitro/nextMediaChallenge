@@ -30,6 +30,9 @@ Vue.component('AddItemComponent', require('./components/items/AddItemComponent.v
 // loading component
 Vue.component('LoadingComponent', require('./components/loading/LoadingComponent.vue').default);
 
+// Navbar
+Vue.component('Navbar', require('./components/navbar/Navbar.vue').default);
+
 import routes from './routes/routes.js'
 
 /**

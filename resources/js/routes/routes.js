@@ -14,7 +14,7 @@ export default new VueRouter({
     base: '/nextMediaChallenge/public/',
     routes: [  
         {
-            path: '',
+            path: '/signin',
             name: 'signin',
             component: Signin,
         },   
@@ -24,7 +24,7 @@ export default new VueRouter({
             component: Signup,
         },   
         {
-            path: '/home',
+            path: '/',
             name: 'home',
             component: Home,
         },   
