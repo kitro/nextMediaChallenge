@@ -2147,7 +2147,7 @@ __webpack_require__.r(__webpack_exports__);
       _api_api_js__WEBPACK_IMPORTED_MODULE_0__["api"].put("account/password", this.user).then(function (data) {
         alert("Your password has been changed successfully");
       })["catch"](function (err) {
-        _this.error.msg = "Error occure";
+        Vue.set(_this.error, 'msg', err.response.data.msg);
       });
     }
   }
@@ -38799,7 +38799,22 @@ var render = function() {
   return _c("div", [
     _c("h2", [_vm._v("Update password")]),
     _vm._v(" "),
-    _c("div", [_vm._v("\n        " + _vm._s(_vm.error.msg) + "\n    ")]),
+    _c(
+      "div",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.error.msg,
+            expression: "error.msg"
+          }
+        ],
+        staticClass: "alert alert-danger",
+        attrs: { role: "alert" }
+      },
+      [_vm._v("\n        " + _vm._s(_vm.error.msg) + "\n    ")]
+    ),
     _vm._v(" "),
     _c(
       "form",

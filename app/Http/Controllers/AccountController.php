@@ -30,10 +30,11 @@ class AccountController extends Controller
         // check passowrd
         if(!Hash::check($request->old_password, Auth::user()->password)) {
             $data['ok'] = false;
-            $data['error'] = "Password incorrect";
+            $data['msg'] = "Password incorrect";
+            return response()->json($data, 401);
         } else {
             $user = User::findOrFail(Auth::user()->id);
-            $user->password = Hash::make($request->new_password);
+            $user->password = Hash::make($request->password);
             $user->save();
         }        
 

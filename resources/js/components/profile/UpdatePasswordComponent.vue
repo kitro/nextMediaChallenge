@@ -1,7 +1,7 @@
 <template>
     <div>
         <h2>Update password</h2>
-        <div>
+        <div v-show="error.msg" class="alert alert-danger" role="alert">
             {{error.msg}}
         </div>
         <form @submit.prevent="updatePassword">
@@ -47,7 +47,7 @@ export default {
                 alert("Your password has been changed successfully")
                
             }).catch(err => {
-                this.error.msg = "Error occure"
+                Vue.set(this.error, 'msg', err.response.data.msg)
             })
         }
     }    
