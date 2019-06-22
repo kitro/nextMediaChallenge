@@ -13,8 +13,8 @@ class SigninController extends Controller
             $response = $http->post('192.168.2.132/nextMediaChallenge/public/oauth/token', [
                 'form_params' => [
                     'grant_type' => 'password',
-                    'client_id' => '4',
-                    'client_secret' =>'FNQoVKQcB7Yrr5OKgkcC48ynpefIugiPULqssGI0',
+                    'client_id' => '1',
+                    'client_secret' =>'yJ83pf7USpbRNL7ph3tjLpd0rVNSzNeJ5PmFcGNF',
                     'username' => $request->email,
                     'password' => $request->password,
                     'scope' => '*',
@@ -22,13 +22,18 @@ class SigninController extends Controller
             ]);
             return $response->getBody();
         } catch (\GuzzleHttp\Exception\BadResponseException $e) {
-			// return $e->getCode();
+            // return $e->getCode();
+            $data['ok'] = false;
             if ($e->getCode() === 400) {
-                return response()->json(['ok'=> false, 'erro'=> 'Invalid Request. Please enter a username or a password.'], $e->getCode());
+                $data['msg'] = 'Invalid Request. Please enter a username or a password.';
+                return response()->json($data, $e->getCode());
             } else if ($e->getCode() === 401) {
-                return response()->json('Your credentials are incorrect. Please try again', $e->getCode());
+                $data['msg'] = 'Your credentials are incorrect. Please try again';
+                return response()->json($data, $e->getCode());
             }
-            return response()->json('Something went wrong on the server.', $e->getCode());
+
+            $data['msg'] = 'Your credentials are incorrect. Please try again';
+            return response()->json($data, $e->getCode());
         }
     }
 }

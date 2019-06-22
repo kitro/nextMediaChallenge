@@ -1,6 +1,10 @@
 <template>
     <div>
+        <Navbar></Navbar>
         <h2>Sign in</h2>
+        <div v-show="error.msg" class="alert alert-danger" role="alert">
+            {{error.msg}}
+        </div>
         <form @submit.prevent="signin">
             <div class="form-group">
                 <label for="email">Email address</label>
@@ -42,7 +46,7 @@ export default {
                 this.$router.push({ name: 'profile'})
                
             }).catch(err => {
-                this.error.msg = "Error occure"
+                Vue.set(this.error, 'msg', err.response.data.msg)
             })
         }
     }    

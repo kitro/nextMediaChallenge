@@ -4,7 +4,7 @@
         <ItemComponent v-for="item in items" v-bind:key="item.id" v-bind:item="item"></ItemComponent>
         <div>
             <button class="btn btn-primary text-center" @click="nextPage">Load More</button>
-            <LoadingComponent v-bind:loading="isLoading"></LoadingComponent>
+            <LoadingComponent :loading="isLoading"></LoadingComponent>
         </div>
     </div>
 </template>
@@ -15,10 +15,10 @@ import {api} from '../../api/api.js'
 export default {
     data : function() {
         return {
-            isLoading: false,
+            isLoading: true,
             error: {},
             moreToLoad: true,
-            page: 0,
+            page: 1,
             last_page: -1,
             items: []
         }

@@ -1,7 +1,8 @@
 <template>
     <div>
+        <Navbar></Navbar>
         <h2>Sign up</h2>
-        <div>
+        <div v-show="error.msg" class="alert alert-danger" role="alert">
             {{error.msg}}
         </div>
         <form @submit.prevent="signup">
@@ -45,10 +46,10 @@ export default {
             api.post("signup", this.user).then(data => {
                 if(data.data.ok) {
                     alert("account created, sign in now")
-
+                    this.$router.push({ name: 'signin'})
                 }
             }).catch(err => {
-                this.error.msg = "Error occure"
+                Vue.set(this.error, 'msg', err.response.data.msg)
             })
         }
     }
