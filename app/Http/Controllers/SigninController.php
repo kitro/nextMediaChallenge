@@ -10,11 +10,16 @@ class SigninController extends Controller
     public function signin(Request $request) {
         $http = new \GuzzleHttp\Client;
         try {
-            $response = $http->post('192.168.2.132/nextMediaChallenge/public/oauth/token', [
+            
+            $end_point = '192.168.2.132/nextMediaChallenge/public/oauth/token';
+            $client_id = '1';
+            $client_secret = 'yJ83pf7USpbRNL7ph3tjLpd0rVNSzNeJ5PmFcGNF';
+
+            $response = $http->post($end_point, [
                 'form_params' => [
                     'grant_type' => 'password',
-                    'client_id' => '1',
-                    'client_secret' =>'yJ83pf7USpbRNL7ph3tjLpd0rVNSzNeJ5PmFcGNF',
+                    'client_id' => $client_id,
+                    'client_secret' => $client_secret,
                     'username' => $request->email,
                     'password' => $request->password,
                     'scope' => '*',
