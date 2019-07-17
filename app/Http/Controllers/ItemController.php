@@ -8,9 +8,16 @@ use File;
 use Validator;
 use App\Item;
 
+use App\Services\ItemService;
+
 class ItemController extends Controller
 {
 
+    protected $itemService;
+
+    public function __construct(ItemService $itemService) {
+        $this->itemService = $itemService;
+    }
 
     // Save item
     public function store(Request $request) {
@@ -31,7 +38,7 @@ class ItemController extends Controller
 
     // List items
     public function index(Request $request) {
-        return Item::with('user')->orderBy('id', 'desc')->paginate();
+        return $this->itemService->allWithUser();
     }
 
     // uplad image

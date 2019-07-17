@@ -20,8 +20,12 @@ class ItemRepository {
         return $this->item->find($id)->update($attributes);
     }
 
-    public function getWithUser() {
+    public function getAllWithUser() {
         return $this->item->with('user')->orderBy('id', 'desc')->paginate();
+    }
+
+    public function getWithUser($id) {
+        return $this->item->with('user')->findOrFail($id);
     }
 
 }
