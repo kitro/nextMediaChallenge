@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Item extends Model
 {
 
+    protected $fillable = ['title', 'description', 'image', 'user_id'];    
     protected $appends = ['image_path'];
 
     // Author of item
