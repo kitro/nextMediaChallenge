@@ -12,7 +12,7 @@ class SigninController extends Controller
         try {
             
             $end_point = '192.168.2.132/nextMediaChallenge/public/oauth/token';
-            $client_id = '1';
+            $client_id = "1";
             $client_secret = 'yJ83pf7USpbRNL7ph3tjLpd0rVNSzNeJ5PmFcGNF';
 
             $response = $http->post($end_point, [
