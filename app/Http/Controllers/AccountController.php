@@ -3,22 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 
 use App\User;
 
-class AccountController extends Controller
-{
-    // retreive user profile
+class AccountController extends Controller {
+
+    protected $userService;
+
+    public function __construct(UserService $userService) {
+        $this->userService = $userService;
+    }
+
+    // retreive current user profile
     public function index(Request $request) {
-        $data['ok'] = true;
-
-        $user = Auth::user();
-
-        $data['user'] = $user;
-
-        return $data;
+        return $this->userService->currentUser();
     }
 
     // update user password

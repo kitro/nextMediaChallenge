@@ -3,7 +3,7 @@ namespace App\Services;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Hash;
+use Illuminate\Support\Facades\Hash;
 
 use App\Http\Requests\UserCreateRequest;
 
@@ -29,6 +29,16 @@ class UserService {
 
         $data['user'] = $user;
         
+        return $data;
+    }
+
+    public function currentUser() {
+        $data['ok'] = true;
+
+        $user = Auth::user();
+
+        $data['user'] = $user;
+
         return $data;
     }
 
