@@ -3,11 +3,15 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Hash;
-use App\User;
+use App\Http\Requests\UserCreateRequest;
+
+use App\Services\UserService;
 
 class UpdateUserPassword extends Command
 {
+
+    protected $userService;
+
     /**
      * The name and signature of the console command.
      *
@@ -27,9 +31,9 @@ class UpdateUserPassword extends Command
      *
      * @return void
      */
-    public function __construct()
-    {
+    public function __construct(UserService $userService) {
         parent::__construct();
+        $this->userService = $userService;
     }
 
     /**
@@ -37,14 +41,9 @@ class UpdateUserPassword extends Command
      *
      * @return mixed
      */
-    public function handle()
-    {
-        $user = User::where('email', $this->argument('email'))->first();
-        $user->name = "";
-        $user->email = $this->argument('email');
-        $user->password = Hash::make($this->argument('password'));
-        $user->save();
+    public function handle() {
+        $user = $this->userService->findUserByEmail($this->argument('email'));
+        $this->userService->updatePassword($user->id, $this->argument('password'));
         $this->info('updated password successfully');
-
     }
 }

@@ -42,8 +42,18 @@ class UserService {
         return $data;
     }
 
-    // update user password
-    public function updatePassword(Request $request) {
+    public function findUserByEmail($email) {
+        return $this->userRepository->findByEmail($email);
+    }
+
+    function updatePassword($id, $new_password) {
+        $user = $this->userRepository->findById($id);
+        $user->password = Hash::make($new_password);
+        return $user->save();
+    }
+
+    // update password for current user
+    public function updatePasswordCurrentUser(Request $request) {
         $data['ok'] = true;
 
         $user = Auth::user();
@@ -54,10 +64,8 @@ class UserService {
             $data['msg'] = "Password incorrect";
             return response()->json($data, 401);
         } else {
-            $user = $this->userRepository->findById(Auth::user()->id);
-            $user->password = Hash::make($request->password);
-            $user->save();
-        }        
+            $this->updatePassword(Auth::user()->id, $request->password);
+        }
 
         return $data;
     }

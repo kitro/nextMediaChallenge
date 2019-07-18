@@ -3,12 +3,14 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\UserCreateRequest;
 
-use App\User;
+use App\Services\UserService;
 
 class CreateUserAccount extends Command
 {
+    protected $userService;
+
     /**
      * The name and signature of the console command.
      *
@@ -28,9 +30,10 @@ class CreateUserAccount extends Command
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(UserService $userService)
     {
         parent::__construct();
+        $this->userService = $userService;
     }
 
     /**
@@ -40,12 +43,14 @@ class CreateUserAccount extends Command
      */
     public function handle()
     {
-        //
-        $user = new User;
-        $user->name = "";
-        $user->email = $this->argument('email');
-        $user->password = Hash::make($this->argument('password'));
-        $user->save();
+        $request = new UserCreateRequest();
+        $request->replace([
+            'email' =>  $this->argument('email'),
+            'password' =>  $this->argument('password'),
+            ]);
+        
+        $this->userService->create($request);
+
         $this->info('user created');
     }
 }

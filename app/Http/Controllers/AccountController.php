@@ -21,6 +21,6 @@ class AccountController extends Controller {
 
     // update user password
     public function updatePassword(Request $request) {
-        return $this->userService->updatePassword($request);
+        return $this->userService->updatePasswordCurrentUser($request);
     }
 }
