@@ -3,10 +3,12 @@ namespace App\Services;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Hash;
 
 use App\Http\Requests\UserCreateRequest;
 
 use App\Repositories\UserRepository;
+
 
 class UserService {
 
