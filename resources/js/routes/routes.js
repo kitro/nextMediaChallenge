@@ -11,7 +11,7 @@ Vue.use(VueRouter)
 
 export default new VueRouter({
     mode: 'history',
-    base: '/nextMediaChallenge/public/',
+    base: process.env.MIX_APP_BASE_URL,
     routes: [  
         {
             path: '/signin',
