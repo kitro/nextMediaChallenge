@@ -32,6 +32,8 @@ export default {
             user : {
                 email : '',
                 password: '',
+                client_id: process.env.MIX_APP_API_CLIENT_ID,
+                client_secret: process.env.MIX_APP_API_CLIENT_SECRET
             }
         }
     },

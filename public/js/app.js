@@ -1728,7 +1728,9 @@ __webpack_require__.r(__webpack_exports__);
       error: {},
       user: {
         email: '',
-        password: ''
+        password: '',
+        client_id: "1",
+        client_secret: "DbnVVvRkkRs0mv5gWP6bqqLbQ4pLB3q1LaP9AuXw"
       }
     };
   },

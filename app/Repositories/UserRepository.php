@@ -23,5 +23,9 @@ class UserRepository {
     public function getOne($id) {
         return $this->user->find($id);
     }
+
+    public function findByEmail($email) {
+        return $this->user->whereEmail($email)->first();
+    }
     
 }

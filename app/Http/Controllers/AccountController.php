@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\User;
+use App\Services\UserService;
 
 class AccountController extends Controller {
 
@@ -14,7 +14,7 @@ class AccountController extends Controller {
         $this->userService = $userService;
     }
 
-    // retreive current user profile
+    // get the current user
     public function index(Request $request) {
         return $this->userService->currentUser();
     }
