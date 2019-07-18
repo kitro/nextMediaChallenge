@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Http\Requests\ItemCreateRequest;
 
 use Validator;
-use App\Item;
 
 use App\Services\ItemService;
 
