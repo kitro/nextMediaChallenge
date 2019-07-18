@@ -1,6 +1,9 @@
 <template>
     <div>
         <h2>Add new item</h2>
+        <div v-show="error.msg" class="alert alert-danger" role="alert">
+            {{error.msg}}
+        </div>
         <form @submit.prevent="addItem">
             <div class="form-group">
                 <label for="title">Title</label>
@@ -18,7 +21,7 @@
                 
             </div>
 
-            <button type="submit" class="btn btn-primary">Sign in</button>
+            <button type="submit" class="btn btn-primary">Add</button>
             <router-link :to="{ name: 'signup' }" class="float-right" >Sign up</router-link>
         </form>
     </div>
@@ -55,7 +58,7 @@ export default {
                 this.$router.push({ name: 'home'})
                
             }).catch(err => {
-                this.error.msg = "Error occure"
+                this.error.msg = err.response.data.message                
             })
         },
         handleFileUpload(){

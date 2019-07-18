@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\ItemCreateRequest;
 
 use Validator;
 use App\Item;
@@ -19,7 +20,7 @@ class ItemController extends Controller
     }
 
     // Save item
-    public function store(Request $request) {        
+    public function store(ItemCreateRequest $request) {        
         return $this->itemService->create($request);
     }
 
@@ -27,5 +28,5 @@ class ItemController extends Controller
     public function index(Request $request) {
         return $this->itemService->allWithUser();
     }
-    
+
 }

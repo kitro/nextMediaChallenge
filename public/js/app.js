@@ -1858,6 +1858,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -1890,7 +1893,7 @@ __webpack_require__.r(__webpack_exports__);
           name: 'home'
         });
       })["catch"](function (err) {
-        _this.error.msg = "Error occure";
+        _this.error.msg = err.response.data.message;
       });
     },
     handleFileUpload: function handleFileUpload() {
@@ -38482,6 +38485,23 @@ var render = function() {
     _c("h2", [_vm._v("Add new item")]),
     _vm._v(" "),
     _c(
+      "div",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.error.msg,
+            expression: "error.msg"
+          }
+        ],
+        staticClass: "alert alert-danger",
+        attrs: { role: "alert" }
+      },
+      [_vm._v("\n        " + _vm._s(_vm.error.msg) + "\n    ")]
+    ),
+    _vm._v(" "),
+    _c(
       "form",
       {
         on: {
@@ -38562,7 +38582,7 @@ var render = function() {
         _c(
           "button",
           { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-          [_vm._v("Sign in")]
+          [_vm._v("Add")]
         ),
         _vm._v(" "),
         _c(

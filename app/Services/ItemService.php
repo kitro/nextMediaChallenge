@@ -4,6 +4,7 @@ namespace App\Services;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+use App\Http\Requests\ItemCreateRequest;
 
 use App\Repositories\ItemRepository;
 use App\Services\UploadImageService;
@@ -18,7 +19,7 @@ class ItemService {
         $this->uploadImageService = $uploadImageService;
     }
     
-    public function create(Request $request) {
+    public function create(ItemCreateRequest $request) {
         $data['ok'] = true;
         
         // upload image
