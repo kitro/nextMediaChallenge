@@ -20,7 +20,7 @@ class UserRepository {
         return $this->user->find($id)->update($attributes);
     }
 
-    public function getOne($id) {
+    public function findById($id) {
         return $this->user->find($id);
     }
 

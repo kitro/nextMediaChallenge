@@ -42,4 +42,25 @@ class UserService {
         return $data;
     }
 
+    // update user password
+    public function updatePassword(Request $request) {
+        $data['ok'] = true;
+
+        $user = Auth::user();
+
+        // check passowrd
+        if(!Hash::check($request->old_password, Auth::user()->password)) {
+            $data['ok'] = false;
+            $data['msg'] = "Password incorrect";
+            return response()->json($data, 401);
+        } else {
+            $user = $this->userRepository->findById(Auth::user()->id);
+            $user->password = Hash::make($request->password);
+            $user->save();
+        }        
+
+        return $data;
+    }
+
+
 }

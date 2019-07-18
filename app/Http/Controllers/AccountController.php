@@ -21,21 +21,6 @@ class AccountController extends Controller {
 
     // update user password
     public function updatePassword(Request $request) {
-        $data['ok'] = true;
-
-        $user = Auth::user();
-
-        // check passowrd
-        if(!Hash::check($request->old_password, Auth::user()->password)) {
-            $data['ok'] = false;
-            $data['msg'] = "Password incorrect";
-            return response()->json($data, 401);
-        } else {
-            $user = User::findOrFail(Auth::user()->id);
-            $user->password = Hash::make($request->password);
-            $user->save();
-        }        
-
-        return $data;
+        return $this->userService->updatePassword($request);
     }
 }
